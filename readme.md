@@ -10,7 +10,7 @@ Originally, I intend to use this for my local development, which uses a separate
 
 I asked [this question](http://stackoverflow.com/questions/5082001/is-there-a-tool-to-watch-a-remote-git-repository-on-ubuntu-and-do-popup-notificat) on StackOverflow to find out if there was a tool to notify me of commits to remote git repositories, and the answer came back no!
 
-Thus, git-notify was born!
+Thus, `git-notify` was born!
 
 ## Installation:
 
