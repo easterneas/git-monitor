@@ -14,7 +14,7 @@ Thus, git-notify was born!
 
 ## Installation:
 
-Just download git-notify and put it somewhere in your `PATH`. If you want to specify a new `PATH`, add this
+Just download git-notify and put it somewhere in your `PATH`. If you want to specify a new `PATH`, add
 
 ```sh
 export PATH="your_directory:$PATH"
