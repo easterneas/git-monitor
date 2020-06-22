@@ -1,32 +1,53 @@
-git-notify
-========
+# git-monitor
 
-This little bash script will watch your origin/master for updates every 60 seconds and uses notify-send to alert you of new commits.
+`git-monitor` is a bash script based on `git-notify` made by [Jake Moffatt][1]. Whenever it notices that there is a new commit, it will automatically pulls new commit to the local repository.
+
+I was looking for a solution, which pulls automatically whether there is a new commit. However, I found `git-notify`, which in fact is a little bash script that will monitor new commits, and then notifies the user that there is a new commit on remote repository. I modified some code a bit, so it will automatically pulls new commit(s) if there's any within specified period.
+
+Originally, I intend to use this for my local development, which uses a separate physical machine. I treat this as an alternative to SMB/NFS, as sometimes it's quite a hassle to setup (especially when I use different development platforms -- e.g. Windows and Linux-based distros like Ubuntu).
+
+## Original `git-notify` Author Notes
 
 I asked [this question](http://stackoverflow.com/questions/5082001/is-there-a-tool-to-watch-a-remote-git-repository-on-ubuntu-and-do-popup-notificat) on StackOverflow to find out if there was a tool to notify me of commits to remote git repositories, and the answer came back no!
 
 Thus, git-notify was born!
 
-Usage:
-----------
+## Installation:
 
-    ~/code/some-git-repository $ git-notify
+Just download git-notify and put it somewhere in your `PATH`. If you want to specify a new `PATH`, add this
 
-The script will run in the background. If you want to kill it later, you can do:
+```sh
+export PATH="your_directory:$PATH"
+```
 
-    ps aux | grep '[g]it-notify'
+to your `.bashrc` file, put `git-monitor` inside, and close and reopen the terminal.
 
-Which will output something like:
+## Usage
 
-    jake      9541  0.0  0.0  12012  1392 pts/3    S    12:54   0:00 /bin/bash ./git-notify
+```
+git-monitor
+```
 
-Note the first number in the list, 9541, that is the PID of the script. You can now terminate it like so:
+The script will run in the background. By default, it will monitor for commit changes every `60` seconds.
 
-    kill 9541
+## Terminating
 
-Installation:
-------------
-Just download git-notify and put it somewhere in your path.
+If you want to kill `git-monitor` later, grab its PID by running
 
-Jake Moffatt, jakeonrails@gmail.com
+```
+ps aux | grep '[g]it-monitor'
+```
 
+It will output something like
+
+```
+jake      9541  0.0  0.0  12012  1392 pts/3    S    12:54   0:00 /bin/bash ./git-monitor
+```
+
+Note the PID, which is the first number of the line. Then, use `kill` with the PID provided above, like
+
+```
+kill 9541
+```
+
+[1]: https://github.com/jakeonrails/git-notify
